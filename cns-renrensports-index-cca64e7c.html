@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人人体育 · 一起运动的社区</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f7f8fa;
+            color: #1e2025;
+            line-height: 1.6;
+        }
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #0b1a2e 0%, #142b44 100%);
+            color: #eef2f6;
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle at 30% 70%, rgba(255,215,100,0.04), transparent 60%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 span {
+            color: #f7d875;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0.75rem auto 0;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+        /* 浅色正文区 */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3.5rem;
+        }
+        .intro-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+            margin-bottom: 2.8rem;
+            border: 1px solid #e9edf2;
+        }
+        .intro-card p {
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+            color: #2e3540;
+        }
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+        a {
+            color: #1d6b9f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #c8502c;
+            text-decoration: underline;
+        }
+        .accent-link {
+            color: #c85a2c;
+        }
+        .accent-link:hover {
+            color: #a2421f;
+        }
+        /* 三个场景模块 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0 3rem;
+        }
+        .scene-item {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e7ebf0;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+        .scene-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+        .scene-icon {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        .scene-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0.6rem;
+            color: #1d2a3a;
+        }
+        .scene-item p {
+            font-size: 0.98rem;
+            color: #3d4755;
+        }
+        .scene-item .tag {
+            display: inline-block;
+            background: #f0f3f7;
+            color: #2c3b4f;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            margin-top: 0.9rem;
+        }
+        /* 常见说明 (FAQ 摘要) */
+        .faq-summary {
+            background: #f0f3f8;
+            border-radius: 24px;
+            padding: 1.8rem 2rem 2rem;
+            margin: 2rem 0 1.5rem;
+        }
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1b2a3b;
+        }
+        .faq-item {
+            border-bottom: 1px solid #dbe0e7;
+            padding: 0.9rem 0;
+        }
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1f2d3d;
+            margin-bottom: 0.2rem;
+        }
+        .faq-answer {
+            font-size: 0.95rem;
+            color: #3f4b5c;
+            margin-top: 0.2rem;
+        }
+        .faq-answer a {
+            font-weight: 500;
+        }
+        .footnote {
+            margin-top: 2.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dce2ea;
+            font-size: 0.9rem;
+            color: #586575;
+            text-align: center;
+        }
+        .footnote a {
+            color: #1d6b9f;
+        }
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero { padding: 3rem 1.2rem 2.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .intro-card { padding: 1.5rem 1.2rem; }
+            .scene-grid { gap: 1.2rem; }
+            .faq-summary { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>一起运动 · <span>人人体育</span></h1>
+        <p>不只是赛事与训练，更是日常里舒展身体、彼此陪伴的社区。</p>
+    </section>
+
+    <!-- 浅色正文区 -->
+    <div class="container">
+
+        <!-- 核心介绍 -->
+        <div class="intro-card">
+            <p>
+                <strong>人人体育</strong> 这个名字听起来很朴实，背后是一群喜欢运动、也喜欢分享的人。
+                有人在这里找球友，有人分享晨跑路线，也有人在周末约一场公园羽毛球。
+                没有门槛，不需要专业背景，只要你愿意动一动，就能找到同类。
+            </p>
+            <p>
+                如果你也好奇这样的氛围，可以来 <a href="https://cns-renrensports.com">人人体育</a> 看看大家最近在聊什么。
+                页面很简单，像一份社区公告板，也像一张随时更新的活动地图。
+            </p>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <div class="scene-grid">
+            <div class="scene-item">
+                <div class="scene-icon">🏸</div>
+                <h3>下班后的球场</h3>
+                <p>六点半的羽毛球局，不拼胜负，只为出汗。常常打完约顿烧烤，顺便认识了隔壁公司遛弯的邻居。</p>
+                <span class="tag">轻松局</span>
+            </div>
+            <div class="scene-item">
+                <div class="scene-icon">🚴</div>
+                <h3>周末骑行小队</h3>
+                <p>没有固定路线，谁发现一条车少风景好的路，群里喊一声就出发。跟骑一段，也能聊一路。</p>
+                <span class="tag">自由约</span>
+            </div>
+            <div class="scene-item">
+                <div class="scene-icon">🧘</div>
+                <h3>公园静练组</h3>
+                <p>拉伸、慢跑、简单的核心训练，节奏自己定。有时候还有人带着瑜伽垫，在树下做十分钟冥想。</p>
+                <span class="tag">慢节奏</span>
+            </div>
+        </div>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <div class="faq-summary">
+            <h2>常见说明</h2>
+            <div class="faq-item">
+                <div class="faq-question">这里适合完全零基础的人吗？</div>
+                <div class="faq-answer">当然。大部分活动都写着“欢迎新手”，很少有人计较技术，大家更在意你是不是玩得开心。如果你想先看看再加入，可以先浏览 <a href="https://cns-renrensports.com">人人体育</a> 上的日常动态。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">需要下载专门的 App 吗？</div>
+                <div class="faq-answer">不需要。目前主要依靠网页和社区聊天群，所有约活动、看公告都在浏览器里完成。打开 <a href="https://cns-renrensports.com">人人体育</a> 就能看到最新的活动帖和说明。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何加入一个具体的运动小组？</div>
+                <div class="faq-answer">每个活动下面都有联系人方式或者群链接，直接私聊就好。大部分组织者都很热心，会告诉你具体集合点和注意事项。</div>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.95rem; color: #3f4f64;">
+                💡 小提示：如果你找不到合适的活动，也可以自己在公告板发个帖子，约三五个人一起动起来。
+            </div>
+        </div>
+
+        <!-- 底部附属说明 -->
+        <div class="footnote">
+            <p>人人体育 · 一个温和的运动社区 &nbsp;|&nbsp; 想了解更多，可以逛逛 <a href="https://cns-renrensports.com">人人体育</a> 的首页。</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
